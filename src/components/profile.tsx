@@ -8,7 +8,9 @@ export default function Profile() {
     <div>
       <div>From Client:</div>
       <div>
-        {session.data?.user ? JSON.stringify(session.data.user) : "Logged out"}
+        {session.data?.user
+          ? JSON.stringify(session.data.user)
+          : "User is not signed in"}
       </div>
     </div>
   );
