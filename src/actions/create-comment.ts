@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { auth } from "@/auth";
 import { db } from "@/db";
-import paths from "@/paths";
+import { paths } from "@/paths";
 
 const createCommentSchema = z.object({
   content: z.string().min(3),
@@ -21,7 +21,7 @@ interface CreateCommentFormState {
 export async function createComment(
   { postId, parentId }: { postId: string; parentId?: string },
   formState: CreateCommentFormState,
-  formData: FormData
+  formData: FormData,
 ): Promise<CreateCommentFormState> {
   const result = createCommentSchema.safeParse({
     content: formData.get("content"),

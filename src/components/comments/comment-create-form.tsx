@@ -38,7 +38,7 @@ export default function CommentCreateForm({
     <form action={action} ref={ref}>
       <div className="space-y-2 px-1">
         <TextField isInvalid={!!formState.errors.content}>
-          <Label htmlFor="content">Reply</Label>
+          <Label>Reply</Label>
           <TextArea name="content" placeholder="Enter your comment" />
           <FieldError>{formState.errors.content?.join(", ")}</FieldError>
         </TextField>
@@ -56,7 +56,7 @@ export default function CommentCreateForm({
 
   return (
     <div>
-      <Button size="sm" variant="tertiary" onClick={() => setOpen(!open)}>
+      <Button size="sm" variant="light" onClick={() => setOpen(!open)}>
         Reply
       </Button>
       {open && form}
