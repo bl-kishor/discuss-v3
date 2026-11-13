@@ -35,27 +35,37 @@ export default function CommentCreateForm({
   }, [formState, startOpen]);
 
   const form = (
-    <form action={action} ref={ref}>
-      <div className="space-y-2 px-1">
+    <form
+      action={action}
+      ref={ref}
+      className="rounded-xl border border-gray-200 bg-gray-50 p-4"
+    >
+      <div className="space-y-3">
         <TextField isInvalid={!!formState.errors.content}>
-          <Label>Reply</Label>
-          <TextArea name="content" placeholder="Enter your comment" />
+          <Label>Your reply</Label>
+          <TextArea
+            name="content"
+            placeholder="Enter your comment"
+            className="min-h-24 resize-y"
+          />
           <FieldError>{formState.errors.content?.join(", ")}</FieldError>
         </TextField>
 
         {formState.errors._form ? (
-          <div className="p-2 bg-red-200 border rounded border-red-400">
+          <div className="rounded border border-red-300 bg-red-50 p-2 text-sm text-red-700">
             {formState.errors._form?.join(", ")}
           </div>
         ) : null}
 
-        <FormButton isLoading={isPending}>Create Comment</FormButton>
+        <FormButton isLoading={isPending} variant="primary">
+          Create Comment
+        </FormButton>
       </div>
     </form>
   );
 
   return (
-    <div>
+    <div className="space-y-2">
       <Button size="sm" variant="light" onClick={() => setOpen(!open)}>
         Reply
       </Button>
